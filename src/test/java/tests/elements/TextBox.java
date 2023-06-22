@@ -19,5 +19,14 @@ public class TextBox extends TestBase {
         driver.findElement(By.xpath("//*[.='Text Box']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//*[@id='userName']")).sendKeys(faker.name().fullName());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//*[@id='userEmail']")).sendKeys(faker.internet().emailAddress());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//*[@id='currentAddress']")).sendKeys(faker.address().fullAddress());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//*[@id='permanentAddress']")).sendKeys(faker.address().fullAddress());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//*[@id='submit']")).click();
+
     }
 }
