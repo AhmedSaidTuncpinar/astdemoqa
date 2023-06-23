@@ -38,7 +38,21 @@ public class TextBox extends TestBase {
 
         //Verify "Elements" feature is clickable
         WebElement elements= driver.findElement(By.xpath("//*[.='Elements']"));
-        Assert.assertTrue(elements.isEnabled());
+        Assert.assertTrue("The elements is not clickable",elements.isDisplayed());
+        Assert.assertTrue("The elements is not clickable", elements.isEnabled());
+
+        //Verify "Text Box option is clickable
+
+        WebElement textBox= driver.findElement(By.xpath("//*[.='Text Box']"));
+        Assert.assertTrue("The text box is not clickable",textBox.isEnabled());
+
+        //Verify "Full Name" is displayed
+        WebElement fullName= driver.findElement(By.xpath("//*[@id='userName']"));
+        Assert.assertTrue("The full name is not displayed", fullName.isDisplayed());
+
+        //Verify "Email" is displayed
+
+
 
     }
 }
