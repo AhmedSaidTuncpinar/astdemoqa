@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 import java.time.Duration;
@@ -34,6 +35,10 @@ public class TextBox extends TestBase {
         String actualUrl= driver.getCurrentUrl();
         String expectedUrl="https://demoqa.com/text-box";
         Assert.assertEquals("Failed",expectedUrl,actualUrl);
+
+        //Verify "Elements" feature is clickable
+        WebElement elements= driver.findElement(By.xpath("//*[.='Elements']"));
+        Assert.assertTrue(elements.isEnabled());
 
     }
 }
