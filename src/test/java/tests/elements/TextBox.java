@@ -1,6 +1,7 @@
 package tests.elements;
 
 import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import utilities.TestBase;
@@ -27,6 +28,12 @@ public class TextBox extends TestBase {
         driver.findElement(By.xpath("//*[@id='permanentAddress']")).sendKeys(faker.address().fullAddress());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//*[@id='submit']")).click();
+
+       //Verifications
+        //Verify the webpage is reachable
+        String actualUrl= driver.getCurrentUrl();
+        String expectedUrl="https://demoqa.com/text-box";
+        Assert.assertEquals("Failed",expectedUrl,actualUrl);
 
     }
 }
