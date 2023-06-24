@@ -18,6 +18,8 @@ public class CheckBox extends TestBase {
         driver.findElement(By.xpath("//span[.='Check Box']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//span[@class='rct-checkbox']")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//button[@aria-label='Expand all']")).click();
 
     }
 }
