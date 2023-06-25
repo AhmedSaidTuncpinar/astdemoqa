@@ -28,11 +28,11 @@ public class CheckBox extends TestBase {
 
        WebElement desktopCheckBox= driver.findElement(By.xpath("(//span[@class='rct-checkbox'])[2]"));
        WebElement documentCheckBox= driver.findElement(By.xpath("(//span[@class='rct-checkbox'])[5]"));
-       WebElement downloadChcekBox= driver.findElement(By.xpath("(//span[@class='rct-checkbox'])[15]"));
+       WebElement downloadCheckBox= driver.findElement(By.xpath("(//span[@class='rct-checkbox'])[15]"));
 
        boolean isDesktopCheckBox= desktopCheckBox.isEnabled();
        boolean isDocumentCheckbox= documentCheckBox.isEnabled();
-       boolean isDownloadCheckbox= downloadChcekBox.isEnabled();
+       boolean isDownloadCheckbox= downloadCheckBox.isEnabled();
 
         Assert.assertTrue("The 'Desktop' checkbox is not clickable",isDesktopCheckBox);
         Assert.assertTrue("The 'Document' checkbox is clickable",isDocumentCheckbox);
