@@ -1,8 +1,10 @@
 package tests.elements;
 
 import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 import java.time.Duration;
@@ -15,11 +17,13 @@ public class WebTables extends TestBase {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//*[.='Elements']")).click();
         driver.findElement(By.xpath("(//span[@class='text'])[4]"));
-        //Task 1. Print the entire table
-        System.out.println("PRINT ENTIRE TABLE***");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        String entireTable= driver.findElement(By.xpath("//div[@class='web-tables-wrapper']")).getText();
-        System.out.println(entireTable);
+        //Task 1. Check Add button is clickable and verify it
+        driver.findElement(By.cssSelector("button[id='addNewRecordButton']")).click();
+
+        WebElement addButton= driver.findElement(By.xpath("//button[@id='addNewRecordButton']"));
+        Assert.assertTrue(addButton.isEnabled());
+
 
     }
 }
