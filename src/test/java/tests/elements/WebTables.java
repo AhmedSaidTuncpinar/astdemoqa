@@ -33,6 +33,7 @@ public class WebTables extends TestBase {
         driver.findElement(By.cssSelector("#age")).sendKeys("33");
         driver.findElement(By.cssSelector("#salary")).sendKeys("55000");
         driver.findElement(By.cssSelector("#department")).sendKeys("Project");
+        driver.findElement(By.cssSelector("#submit")).click();
 
 
 
