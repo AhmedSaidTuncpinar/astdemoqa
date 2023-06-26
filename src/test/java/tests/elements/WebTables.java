@@ -16,7 +16,9 @@ public class WebTables extends TestBase {
         driver.get("https://demoqa.com");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//*[.='Elements']")).click();
-        driver.findElement(By.xpath("(//span[@class='text'])[4]"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement webTables= driver.findElement(By.xpath("//span[text()='Web Tables']"));
+        webTables.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         //Task 1. Check Add button is clickable and verify it
         driver.findElement(By.cssSelector("button[id='addNewRecordButton']")).click();
