@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 import java.time.Duration;
+import java.util.List;
 
 public class WebTables extends TestBase {
     @Test
@@ -27,13 +28,25 @@ public class WebTables extends TestBase {
         Assert.assertTrue(addButton.isEnabled());
 
         //Task 2 Add new input by filling the registration page
-        driver.findElement(By.cssSelector("#firstName")).sendKeys(faker.name().firstName());
-        driver.findElement(By.cssSelector("#lastName")).sendKeys(faker.name().lastName());
+        driver.findElement(By.cssSelector("#firstName")).sendKeys("Mike");
+        driver.findElement(By.cssSelector("#lastName")).sendKeys("Anderson");
         driver.findElement(By.cssSelector("#userEmail")).sendKeys(faker.internet().emailAddress());
         driver.findElement(By.cssSelector("#age")).sendKeys("33");
         driver.findElement(By.cssSelector("#salary")).sendKeys("55000");
         driver.findElement(By.cssSelector("#department")).sendKeys("Project");
         driver.findElement(By.cssSelector("#submit")).click();
+
+
+        //Verify new input is created
+        WebElement newRecord=driver.findElement(By.xpath("//div[@class='ReactTable -striped -highlight']"));
+        String newRecordText=newRecord.getText();
+
+        Assert.assertTrue(newRecordText.contains("Mike"));
+        Assert.assertTrue(newRecordText.contains("Anderson"));
+        Assert.assertTrue(newRecordText.contains("33"));
+
+
+
 
 
 
