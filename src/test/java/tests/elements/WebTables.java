@@ -35,8 +35,6 @@ public class WebTables extends TestBase {
         driver.findElement(By.cssSelector("#salary")).sendKeys("55000");
         driver.findElement(By.cssSelector("#department")).sendKeys("Project");
         driver.findElement(By.cssSelector("#submit")).click();
-
-
         //Verify new input is created
         WebElement newRecord=driver.findElement(By.xpath("//div[@class='ReactTable -striped -highlight']"));
         String newRecordText=newRecord.getText();
@@ -44,13 +42,5 @@ public class WebTables extends TestBase {
         Assert.assertTrue(newRecordText.contains("Mike"));
         Assert.assertTrue(newRecordText.contains("Anderson"));
         Assert.assertTrue(newRecordText.contains("33"));
-
-
-
-
-
-
-
-
     }
 }
