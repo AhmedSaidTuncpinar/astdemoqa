@@ -30,7 +30,7 @@ public class Buttons extends TestBase {
         Assert.assertTrue(driver.findElement(By.id("rightClickMessage")).isDisplayed());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        WebElement clickMe=driver.findElement(By.xpath("//button[@id='tfSEN']"));
+        WebElement clickMe=driver.findElement(By.xpath("//button[.='Click Me']"));
         actions.click(clickMe).perform();
         Assert.assertTrue(driver.findElement(By.id("dynamicClickMessage")).isDisplayed());
 
