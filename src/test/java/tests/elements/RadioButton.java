@@ -14,8 +14,7 @@ public class RadioButton extends TestBase {
     public void Test(){
 
 
-        driver.get("https://demoqa.com");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
         driver.findElement(By.xpath("//*[.='Elements']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("(//span[@class='text'])[3]")).click();
