@@ -14,6 +14,7 @@ import java.time.Duration;
 public class Buttons extends TestBase {
     @Test
     public void Test(){
+
         driver.findElement(By.xpath("//*[.='Elements']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//span[.='Buttons']")).click();
@@ -33,8 +34,6 @@ public class Buttons extends TestBase {
         WebElement clickMe=driver.findElement(By.xpath("//button[.='Click Me']"));
         actions.click(clickMe).perform();
         Assert.assertTrue(driver.findElement(By.id("dynamicClickMessage")).isDisplayed());
-
-
 
     }
 

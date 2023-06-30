@@ -52,8 +52,5 @@ public class TextBox extends TestBase {
         //Verify "Email" is displayed
         WebElement email= driver.findElement(By.xpath("//*[@id='userEmail']"));
         Assert.assertTrue("Email is displayed", email.isDisplayed());
-
-
-
     }
 }
