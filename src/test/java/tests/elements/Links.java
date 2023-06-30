@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class Links extends TestBase {
     @Test
-    public void Test(){
+    public void Test() throws InterruptedException {
         driver.findElement(By.xpath("//*[.='Elements']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//span[text()='Links']")).click();
@@ -28,5 +28,21 @@ public class Links extends TestBase {
         for (String eachHandle:allWindowHandles){
             driver.switchTo().window(eachHandle);
         }
+        String window2Handle=driver.getWindowHandle();
+        Assert.assertEquals("DEMOQA",driver.getTitle());
+
+        String window2Text=driver.findElement(By.xpath("//a[@id='dynamicLink']")).getText();
+        Assert.assertEquals("DEMOQA",window2Text);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
+        driver.switchTo().window(window2Handle);
+        Thread.sleep(5000);
+
+        driver.switchTo().window(window1Handle);
+        Thread.sleep(5000);
+
+
     }
+
+
 }
