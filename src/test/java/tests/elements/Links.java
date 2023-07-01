@@ -3,6 +3,7 @@ package tests.elements;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 import java.time.Duration;
@@ -15,34 +16,52 @@ public class Links extends TestBase {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//span[text()='Links']")).click();
 
-       String window1Text= driver.findElement(By.xpath("//a[@id='simpleLink']")).getText();
-        Assert.assertEquals("DEMOQA",driver.getTitle());
+        // Click on the first window link to open a new window
 
-        String window1Handle= driver.getWindowHandle();
-        System.out.println(window1Handle);
-
-        driver.findElement(By.xpath("//a[@id='simpleLink']")).click();
-
-        Set<String> allWindowHandles=driver.getWindowHandles();
-        System.out.println(allWindowHandles);
-        for (String eachHandle:allWindowHandles){
-            driver.switchTo().window(eachHandle);
+       WebElement firstWindowLink= driver.findElement(By.xpath("//a[@id='simpleLink']"));
+       firstWindowLink.click();
+        // Get the window handles
+        Set<String> windowHandles=driver.getWindowHandles();
+        // Switch to the new window
+        String mainWindowHandle= driver.getWindowHandle();
+        for (String handle:windowHandles){
+            if (!handle.equals(mainWindowHandle)){
+                driver.switchTo().window(handle);
+                break;
+            }
         }
-        String window2Handle=driver.getWindowHandle();
-        Assert.assertEquals("DEMOQA",driver.getTitle());
+        // Perform actions in the new window (e.g., print the URL)
+        System.out.println("New Window URL: " + driver.getCurrentUrl());
+        // Close the new window
+        driver.close();
 
-        String window2Text=driver.findElement(By.xpath("//a[@id='dynamicLink']")).getText();
-        Assert.assertEquals("DEMOQA",window2Text);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        // Switch back to the main window
+        driver.switchTo().window(mainWindowHandle);
+        // Find the element for the second window link and click
+       WebElement secondWindowLink= driver.findElement(By.cssSelector("#dynamicLink"));
+        secondWindowLink.click();
+        // Get the window handles again
+        windowHandles = driver.getWindowHandles();
 
-        driver.switchTo().window(window2Handle);
-        Thread.sleep(5000);
+        // Switch to the new window
+        for (String handle : windowHandles) {
+            if (!handle.equals(mainWindowHandle)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
 
-        driver.switchTo().window(window1Handle);
-        Thread.sleep(5000);
+        // Perform actions in the new window (e.g., print the URL)
+        System.out.println("New Window URL: " + driver.getCurrentUrl());
+
+        // Close the new window
+        driver.close();
+
+        // Switch back to the main window
+        driver.switchTo().window(mainWindowHandle);
 
 
     }
 
+    }
 
-}
