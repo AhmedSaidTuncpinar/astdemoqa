@@ -98,6 +98,20 @@ public class Links extends TestBase {
         String textOfUnauthorized=unauthorizedResponse.getText();
         Assert.assertTrue(textOfUnauthorized.contains("Unauthorized"));
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement forbiddenLink= driver.findElement(By.cssSelector("#forbidden"));
+        forbiddenLink.click();
+        WebElement forbiddenResponse=driver.findElement(By.xpath("//a[text()='Forbidden']"));
+        String textOfForbidden=forbiddenResponse.getText();
+        Assert.assertTrue(textOfForbidden.contains("Forbidden"));
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement notFoundLink= driver.findElement(By.cssSelector("#invalid-url"));
+        notFoundLink.click();
+        WebElement notFoundResponse=driver.findElement(By.xpath("//a[text()='Not Found']"));
+        String textOfNotFound=notFoundResponse.getText();
+        Assert.assertTrue(textOfNotFound.contains("Not Found"));
+
     }
     }
 
