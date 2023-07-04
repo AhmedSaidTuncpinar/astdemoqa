@@ -68,6 +68,15 @@ public class Links extends TestBase {
        WebElement responseCreated= driver.findElement(By.cssSelector("#linkResponse"));
        String textOfCreated= responseCreated.getText();
         Assert.assertTrue(textOfCreated.contains("Link has responded"));
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement noContentLink=driver.findElement(By.cssSelector("#no-content"));
+        noContentLink.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement noContentResponse= driver.findElement(By.xpath("//b[text()='No Content']"));
+        String textOfNoContent= noContentResponse.getText();
+        Assert.assertTrue(textOfNoContent.contains("No Content"));
+
     }
     }
 
