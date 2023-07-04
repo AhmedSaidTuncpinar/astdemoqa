@@ -60,8 +60,14 @@ public class Links extends TestBase {
         // Switch back to the main window
         driver.switchTo().window(mainWindowHandle);
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
+       WebElement createdLink= driver.findElement(By.cssSelector("#created"));
+       createdLink.click();
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+       WebElement responseCreated= driver.findElement(By.cssSelector("#linkResponse"));
+       String textOfCreated= responseCreated.getText();
+        Assert.assertTrue(textOfCreated.contains("Link has responded"));
     }
-
     }
 
