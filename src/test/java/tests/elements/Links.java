@@ -77,6 +77,27 @@ public class Links extends TestBase {
         String textOfNoContent= noContentResponse.getText();
         Assert.assertTrue(textOfNoContent.contains("No Content"));
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement movedLink=driver.findElement(By.cssSelector("#moved"));
+        movedLink.click();
+        WebElement movedResponse=driver.findElement(By.xpath("//b[text()='Moved Permanently']"));
+        String textOfMoved=movedResponse.getText();
+        Assert.assertTrue(textOfMoved.contains("Moved Permanently"));
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement badRequestLink=driver.findElement(By.cssSelector("#bad-request"));
+        badRequestLink.click();
+        WebElement badRequestResponse=driver.findElement(By.xpath("//a[text()='Bad Request']"));
+        String textOfBadRequest =badRequestResponse.getText();
+        Assert.assertTrue(textOfBadRequest.contains("Bad Request"));
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebElement unauthorizedLink= driver.findElement(By.cssSelector("#unauthorized"));
+        unauthorizedLink.click();
+        WebElement unauthorizedResponse=driver.findElement(By.xpath("//a[text()='Unauthorized']"));
+        String textOfUnauthorized=unauthorizedResponse.getText();
+        Assert.assertTrue(textOfUnauthorized.contains("Unauthorized"));
+
     }
     }
 
