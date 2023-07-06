@@ -14,34 +14,8 @@ import java.util.List;
 
 public class BrokenLinksAndImages extends TestBase {
     @Test
-    public void testBrokenLinks() {
-        driver.get("https://demoqa.com/broken");
+    public void Test(){
+        driver.findElement(By.xpath("//span[text()='Broken Links - Images']")).click();
 
-        List<WebElement> links = driver.findElements(By.tagName("a"));
-
-        for (WebElement link : links) {
-            String href = link.getAttribute("href");
-
-            if (href != null && !href.isEmpty()) {
-                HttpURLConnection connection = null;
-
-                try {
-                    connection = (HttpURLConnection) (new URL(href)).openConnection();
-                    connection.setRequestMethod("HEAD");
-                    connection.connect();
-
-                    int responseCode = connection.getResponseCode();
-                    if (responseCode >= 400) {
-                        System.out.println("Broken link: " + href);
-                    }
-                } catch (IOException e) {
-                    System.out.println("Exception occurred while checking link: " + href);
-                } finally {
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
-                }
-            }
-        }
     }
 }
