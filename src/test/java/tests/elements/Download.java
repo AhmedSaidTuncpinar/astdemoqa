@@ -38,7 +38,5 @@ public class Download extends TestBase {
         String actualFileName = uploadedFilePath.substring(uploadedFilePath.lastIndexOf("\\") + 1);
 
         Assert.assertEquals("File names mismatch", expectedFileName, actualFileName);
-
-
     }
 }
