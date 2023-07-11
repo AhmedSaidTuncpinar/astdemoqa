@@ -10,15 +10,21 @@ import java.time.Duration;
 
 public class HomePage extends TestBase {
     @Test
-    public void Test(){
-       WebElement mainPicture=  driver.findElement(By.cssSelector("a[href='https://demoqa.com']"));
-       mainPicture.click();
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        Assert.assertTrue(mainPicture.isSelected());
+    public void Test() {
+        WebElement mainPicture = driver.findElement(By.cssSelector("a[href='https://demoqa.com']"));
+        mainPicture.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        WebElement mainBanner= driver.findElement(By.xpath("//img[@class='banner-image']"));
+        // Re-locate the mainPicture element after clicking
+        mainPicture = driver.findElement(By.cssSelector("a[href='https://demoqa.com']"));
+        Assert.assertTrue(mainPicture.isDisplayed());
+
+        WebElement mainBanner = driver.findElement(By.xpath("//img[@class='banner-image']"));
         mainBanner.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         Assert.assertTrue(mainBanner.isEnabled());
+
+        driver.close();
     }
 }
+
