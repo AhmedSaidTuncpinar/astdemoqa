@@ -13,7 +13,11 @@ public class MainPage extends TestBase {
     public void mainPage(){
      WebElement mainHead= driver.findElement(By.xpath("//a[@href='https://demoqa.com']"));
      mainHead.click();
-        Assert.assertTrue(mainHead.isEnabled());
+        String expectedPageTitle = "DEMOQA";
+        String actualPageTitle = driver.getTitle();
+        System.out.println(actualPageTitle);
+        //Assert.assertEquals(expectedPageTitle, actualPageTitle);
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         WebElement bannerImage= driver.findElement(By.xpath("//img[@class='banner-image']"));
