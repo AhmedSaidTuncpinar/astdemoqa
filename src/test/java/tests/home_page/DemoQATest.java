@@ -3,6 +3,7 @@ package tests.home_page;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
@@ -12,7 +13,7 @@ import java.time.Duration;
 
 public class DemoQATest extends TestBase {
     @Test
-    public void testAllFeatures() {
+    public void testAllFeatures() throws InterruptedException {
         // Find and click on the "Toolsqa" link
        driver.findElement(By.xpath("//a[@href='https://demoqa.com']")).click();
         WebElement toolsqa= driver.findElement(By.xpath("//img[@class='banner-image']"));
@@ -63,10 +64,13 @@ public class DemoQATest extends TestBase {
         WebElement elementInteractions= driver.findElement(By.xpath("(//div[text()='Interactions'])[1]"));
         Assert.assertTrue(elementInteractions.isDisplayed());
 
+
+
         driver.navigate().back();
-        Actions actions= new Actions(driver);
+
         WebElement webelementBook=driver.findElement(By.xpath("//h5[text()='Book Store Application']"));
-        actions.moveToElement(webelementBook).click().build().perform();
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", webelementBook);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         WebElement elementBook= driver.findElement(By.xpath("(//div[text()='Book Store'])[1]"));
         Assert.assertTrue(elementBook.isDisplayed());
