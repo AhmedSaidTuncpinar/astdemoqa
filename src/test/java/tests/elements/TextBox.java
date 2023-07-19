@@ -15,9 +15,9 @@ public class TextBox extends TestBase {
     public void Test(){
         Faker faker= new Faker();
 
-        driver.findElement(By.xpath("//*[.='Elements']")).click();
+        driver.findElement(By.xpath("//h5[.='Elements']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        driver.findElement(By.xpath("//*[.='Text Box']")).click();
+        driver.findElement(By.xpath("//span[.='Text Box']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//*[@id='userName']")).sendKeys(faker.name().fullName());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));

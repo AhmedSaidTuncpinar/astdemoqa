@@ -17,7 +17,7 @@ public class RadioButton extends TestBase {
 
         driver.findElement(By.xpath("//*[.='Elements']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        driver.findElement(By.xpath("(//span[@class='text'])[3]")).click();
+        driver.findElement(By.xpath("//span[.='Radio Button']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         WebElement yesRadioButton= driver.findElement(By.xpath("//label[@for='yesRadio']"));
         WebElement impressiveRadioButton= driver.findElement(By.xpath("//label[@for='impressiveRadio']"));
